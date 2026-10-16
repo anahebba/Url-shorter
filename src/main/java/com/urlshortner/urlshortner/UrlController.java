@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import java.net.URI;
+import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:5173")
@@ -28,5 +29,10 @@ public class UrlController {
                         .location(URI.create(url))
                         .<Void>build())
                 .orElse(ResponseEntity.notFound().build());
+    }
+
+    @GetMapping("/api/urls")
+     public List<UrlMapping> getAllUrls() {
+        return urlService.getAllUrls();
     }
 }

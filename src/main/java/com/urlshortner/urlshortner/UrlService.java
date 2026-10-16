@@ -1,6 +1,7 @@
 package com.urlshortner.urlshortner;
 import org.springframework.stereotype.Service;
 import java.util.Optional;
+import java.util.List;
 
 @Service
 public class UrlService {
@@ -21,5 +22,9 @@ public class UrlService {
     public Optional<String> getLongUrl(String shortCode) {
         return repository.findByShortCode(shortCode)
                 .map(UrlMapping::getLongUrl);
+    }
+
+    public List<UrlMapping> getAllUrls(){
+        return repository.findAll();
     }
 }
